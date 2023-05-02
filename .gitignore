@@ -1,0 +1,7 @@
+node_modules/
+src/
+.DS_Store
+.idea/
+package-lock.json
+package.json
+gulpfile.babel.js
