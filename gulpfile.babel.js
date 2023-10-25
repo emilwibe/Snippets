@@ -25,13 +25,19 @@ const paths = {
   }
   
   const dirs = {
-    dest: "./dist"
+    dest: "./dist",
+    css: "./dist/css",
+    js: "./dist/js"
   }
 
   export const styles = () => src( paths.css, { sourcemaps: true } )
     .pipe(concat("core.min.css"))
     .pipe(cleanCSS({ compatibility: "*"}))
-    .pipe(dest(dirs.dest, { sourcemaps: true }))
+    .pipe(dest(dirs.css, { sourcemaps: true }))
+
+    export const styles_dev = () => src( paths.css, { sourcemaps: true } )
+    .pipe(concat("core.dev.css"))
+    .pipe(dest(dirs.css, { sourcemaps: true }))
 
   export const jsHead = () => src(paths.scriptsHead)
     .pipe(concat("jsHead.min.js"))
@@ -39,8 +45,8 @@ const paths = {
     .pipe(dest(dirs.dest))
 
   export const jsFooter = () => src(paths.scriptsFooter)
-    .pipe(concat("jsFooter.min.js"))
+    .pipe(concat("scripts-footer.js"))
     .pipe(uglify())
-    .pipe(dest(dirs.dest))
+    .pipe(dest(dirs.js))
 
-  exports.default = series(styles, jsHead, jsFooter);
+  exports.default = series(styles, styles_dev, jsHead, jsFooter);
