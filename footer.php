@@ -1,5 +1,5 @@
   <footer>
-    <p class="colophon">Snippets.dk er udviklet af <a href="https://ew.dk" target="_blank">EW Web</a> 2019 - <?php echo date("Y"); ?>&copy;</p>
+    <p class="colophon">Snippets.dk er udviklet af &copy;<a href="https://ew.dk" target="_blank">EW Web</a> 2019 - <?php echo date("Y"); ?></p>
   </footer>
 
   <?php wp_footer(); ?>
